@@ -1,3 +1,5 @@
+package flink.jop.getTrade.io
+
 import org.apache.flink.streaming.api.functions.source.SourceFunction
 import org.java_websocket.client.WebSocketClient
 import org.java_websocket.handshake.ServerHandshake
@@ -33,12 +35,12 @@ class BinanceWebSocketSource(symbol: String) extends SourceFunction[String] {
 
     // Bağlantı kurulana kadar bekle
     while (!client.getConnection.isOpen && isRunning) {
-      Thread.sleep(100)
+      Thread.sleep(10)
     }
 
     // Bağlantı açıkken çalışmaya devam et
     while (isRunning && client.getConnection.isOpen) {
-      Thread.sleep(100)
+      Thread.sleep(10)
     }
   }
 
